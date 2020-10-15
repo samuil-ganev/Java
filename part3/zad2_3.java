@@ -4,7 +4,7 @@ public class zad2_3 {
 
 	public static void main(String[] args) {
 		
-		int[] results = new int[10];
+	    int[] results = new int[10];
 	    char[] ans = new char[10];
 	    
 	    for (int i=0;i<10;++i)

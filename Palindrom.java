@@ -2,15 +2,14 @@ class Palindrom {
 
     public static void main(String[] args) {
        
-        int numbers = 12;
-        int i = 0;
+        int numbers = 120;
         int num = 2;
-        while (i < numbers) {
+        
+        while (numbers--) {
             
             if (isPalindromicPrime(num)) {
             
                 System.out.println(num + " ");
-                i++;
             
             }
             
@@ -21,39 +20,31 @@ class Palindrom {
     }
     
     public static boolean isPalindromicPrime(int num) {
-       
-        boolean isPP = true;
+        
         int reversed = 0;
         double m = Math.ceil(Math.sqrt(num));
         
         for (int i = 2;i<=m;++i) {
           
-          if (num % i == 0) {
-            
-            isPP = false;
-            break;
-            
-            }
+          if (num % i == 0)
+              return false;
         
         }
+        
+        int numCopy = num;
        
-        while (num != 0) {
+        while (numCopy != 0) {
               
-              int digit = num % 10;
+              int digit = numCopy % 10;
               reversed = reversed * 10 + digit;
-              num /= 10;
-        
-        }
-        
-        System.out.println(reversed);
-        
-        if (reversed != num) {
+              numCopy /= 10;
             
-            isPP = false;
-        
         }
         
-        return isPP;
+        if (reversed != num)
+            return false;
+        
+        return true;
     
     }
 

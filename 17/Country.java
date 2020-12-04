@@ -38,7 +38,7 @@ class Country {
 
   public void setCity(String name, int population, int id) {
 
-    cities[id] = new City(name, population, this.name);
+    cities[id] = new City(name, population, cities[id].getCitizens(), this.name);
 
   }
 

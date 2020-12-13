@@ -14,7 +14,7 @@ class ChildrenBook extends Book {
 
   public double computeSalePrice() {
    
-    return super.computeSalePrice() * 1.4;
+    return super.getRegularPrice() * 0.3;
   
   }
 

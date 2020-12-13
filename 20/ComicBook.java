@@ -12,7 +12,7 @@ class ComicBook {
 
   public double computeSalePrice() {
    
-    return super.computeSalePrice() * 1.2;
+    return super.getRegularPrice() * 0.4;
   
   }
 

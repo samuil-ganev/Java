@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+class binConv {
+
+  public static String dec2Bin(int value) {
+
+    if (value == 0)
+      return "";
+
+    return (char)(value % 2 + '0') + dec2Bin(value / 2);
+
+  }
+
+  public static void main(String[] args) {
+    
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+
+    System.out.println(dec2Bin(n));
+
+    sc.close();
+
+  }
+
+}

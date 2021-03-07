@@ -4,6 +4,15 @@ public class GenericStack<E> {
   private int size = 0;
   private int capacity = 3;
 
+  GenericStack() {}
+
+  GenericStack(E[] list) {
+
+    for (int i=0;i<list.length;++i)
+      this.list.add(list[i]);
+
+  }
+
 	public int getSize() {
 		return size;
 	}

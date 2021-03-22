@@ -14,10 +14,12 @@ class readSort {
     BufferedReader br = new BufferedReader(fr);
 
     String line;
-    Set<String> words = new HashSet<String>();
+    LinkedList<String> words = new LinkedList<String> ();
 
     while ((line = br.readLine()) != null) 
       words.add(line);
+    
+    Collections.sort(words);
 
     Iterator it = words.iterator();
 

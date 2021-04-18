@@ -79,6 +79,29 @@ class zad {
 
   }
 
+  public static boolean solution3(int nums[], int result) {
+
+    sort(nums);
+
+    int leftBorder = 0, rightBorder = nums.length - 1;
+
+    while (leftBorder < rightBorder) {
+
+      if (nums[leftBorder] + nums[rightBorder] == result)
+        return true;
+
+      if (nums[leftBorder] + nums[rightBorder] < result) {
+        leftBorder += 1;
+      } else {
+        rightBorder -= 1;
+      }
+
+    }
+
+    return false;
+
+  }
+
   public static void main(String[] args) {
 
     Scanner sc = new Scanner(System.in);
@@ -86,7 +109,7 @@ class zad {
     int[] nums = {1, 8, 3, 7, 5, 9};
     int result = sc.nextInt();
 
-    if (solution2(nums, result))
+    if (solution3(nums, result))
       System.out.println("Found");
 
   }

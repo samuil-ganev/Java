@@ -3,19 +3,21 @@ import java.io.*;
 class CompareTime {
 
   public static long selectionSort(int[] list) {
+
+    int[] list1 = list.clone();
 		
     long start = System.currentTimeMillis();
 
-    for (int i = 0; i < list.length - 1; i++) {
+    for (int i = 0; i < list1.length - 1; i++) {
       
-			double currentMin = list[i];
+			int currentMin = list1[i];
 			int currentMinIndex = i;
 			
-      for (int j = i + 1; j < list.length; j++) {
+      for (int j = i + 1; j < list1.length; j++) {
 			
-      	if (currentMin > list[j]) {
+      	if (currentMin > list1[j]) {
 			
-      		currentMin = list[j];
+      		currentMin = list1[j];
 					currentMinIndex = j;
 			
       	}
@@ -24,8 +26,8 @@ class CompareTime {
 
 			if (currentMinIndex != i) {
 			
-      	list[currentMinIndex] = list[i];
-				list[i] = currentMin;
+      	list1[currentMinIndex] = list1[i];
+				list1[i] = currentMin;
 			
       }
 		
@@ -37,9 +39,11 @@ class CompareTime {
 
   public static long quickSort(int[] list) {
 	
+    int[] list1 = list.clone();
+
     long start = System.currentTimeMillis();
 
-  	quickSort(list, 0, list.length - 1);
+  	quickSort(list1, 0, list1.length - 1);
 	
     return System.currentTimeMillis() - start;
 
@@ -101,9 +105,11 @@ class CompareTime {
 
   public static long MergeSort(int[] list) {
 
+    int[] list1 = list.clone();
+
     long start = System.currentTimeMillis();
 
-    mergeSort(list);
+    mergeSort(list1);
 
     return System.currentTimeMillis() - start;
 
@@ -151,18 +157,20 @@ class CompareTime {
 	
   }
 
-  public static long insertionSort(double[] list) {
+  public static long insertionSort(int[] list) {
 		
+    int[] list1 = list.clone();
+
     long start = System.currentTimeMillis();
 
-    for (int i = 1; i < list.length; i++) {
+    for (int i = 1; i < list1.length; i++) {
 			
-      double currentElement = list[i];
+      int currentElement = list1[i];
 			int k;
-			for (k = i - 1; k >= 0 && list[k] > currentElement; k--)
-        list[k + 1] = list[k];
+			for (k = i - 1; k >= 0 && list1[k] > currentElement; k--)
+        list1[k + 1] = list1[k];
 
-			list[k + 1] = currentElement;
+			list1[k + 1] = currentElement;
 		
     }
 
@@ -172,17 +180,19 @@ class CompareTime {
 
   public static long bubbleSort(int[] list) {
 		
+    int[] list1 = list.clone();
+
     long start = System.currentTimeMillis();
 
-    for (int k = 0; k < list.length - 1; k++) {
+    for (int k = 0; k < list1.length - 1; k++) {
 		
-    	for (int i = 0; i < list.length - 1 - k; i++) {
+    	for (int i = 0; i < list1.length - 1 - k; i++) {
 		
-    		if (list[i] > list[i + 1]) {
+    		if (list1[i] > list1[i + 1]) {
 
-					int temp = list[i];
-					list[i] = list[i + 1];
-					list[i + 1] = temp;
+					int temp = list1[i];
+					list1[i] = list1[i + 1];
+					list1[i + 1] = temp;
 
 				}
 
@@ -198,20 +208,27 @@ class CompareTime {
 
     System.out.println("ArraySize | SelectionSort | BubbleSort | MergeSort | QuickSort");
 
-    int sizes[] = {50_000, 100_000, 150_000, 200_000, 250_000, 300_000};
+    int sizes[] = {50, 100, 150, 200, 250, 300};
+    int[] list = new int[sizes[sizes.length-1]];
 
     for (int i=0;i<sizes.length;++i) {
 
       int newEl = sizes[i];
+      int start = 0;
 
-      if (i != 0)
+      if (i != 0) {
         newEl -= sizes[i-1];
-
-      for (int j=0;j<newEl;++j) {
-
-        
-
+        start = sizes[i] - sizes[i-1];
       }
+
+      for (int j=0;j<newEl;++j)
+        list[start+j] = (int)(Math.random() * 10);
+
+      System.out.print(sizes[i] + " | ");
+      System.out.print(selectionSort(list) + " | ");
+      System.out.print(bubbleSort(list) + " | ");
+      System.out.print(MergeSort(list) + " | ");
+      System.out.print(quickSort(list) + "\n");
 
     }
 

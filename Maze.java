@@ -29,14 +29,14 @@ public class Maze extends JFrame {
 
     private int pathIndex;
 
-    public View() {
+    public Maze() {
 
         setTitle("Maze");
         setSize(640, 480);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        DepthFirst.searchPath(maze, 1, 1, path);
+        MazeSolver.searchPath(maze, 1, 1, path);
 
         pathIndex = path.size() - 2;    
 
